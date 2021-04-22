@@ -16,7 +16,8 @@ export class BrandComponent implements OnInit {
   ngOnInit(): void {
     this.getBrands();
   }
-
+  
+  
   getBrands(){
     this.brandService.getBrands().subscribe(response => {
       this.brands = response.data

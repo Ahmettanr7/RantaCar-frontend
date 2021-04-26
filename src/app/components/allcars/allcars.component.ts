@@ -5,11 +5,11 @@ import { CarImage } from 'src/app/models/carImage';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
-  selector: 'app-car',
-  templateUrl: './car.component.html',
-  styleUrls: ['./car.component.css']
+  selector: 'app-allcars',
+  templateUrl: './allcars.component.html',
+  styleUrls: ['./allcars.component.css']
 })
-export class CarComponent implements OnInit {
+export class AllcarsComponent implements OnInit {
 
   cars:Car [] = [];
   carImages:CarImage[];

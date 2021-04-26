@@ -1,0 +1,73 @@
+<br><br>
+<div>
+    <div class="row">
+        <div id="carouselExampleIndicators " class="carousel slide col-md-7 " data-bs-ride="carousel ">
+            <div class="carousel-inner ">
+                <div *ngFor="let car of cars " class="carousel-item active ">
+                    <img *ngIf="car.carImage.length==0 " [src]="imgUrl + defaultImage " class="d-block w-100 " alt="... ">
+                    <img *ngIf="car.carImage.length !=0 " [src]="imgUrl + car.carImage[0].imagePath " class="d-block w-100 " alt="... ">
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let car of cars" class="col-md-5">
+            <div class="row">
+                <h2>{{car.brandName}} {{car.carName}}</h2>
+                <a routerLink="/cars/details/{{car.carId}}" href="">
+                    <h6>{{car.brandName}}</h6>
+                </a>
+                <div style="background-color: #343a40; width: auto; border-radius: 5px; margin: 30px;">
+                    <h6 style="text-align: center; color: white;"><b>Renk :</b> {{car.colorName}}</h6>
+                </div>
+                <div style="background-color: #343a40; width: auto; border-radius: 5px; margin: auto;">
+                    <h6 style="text-align: center; color: white;"><b>Model :</b> {{car.modelYear}}</h6>
+                </div>
+                <div style="background-color: #343a40; width: auto; border-radius: 5px; margin: auto;">
+                    <h6 style="text-align: center; color: white;"><b>Yakıt :</b> {{car.description}}</h6>
+                </div>
+                <hr style="margin: 50px;">
+
+                <div style="background-color: #393; width: auto; border-radius: 5px; margin: auto;">
+                    <h6 style="text-align: center; color: white;">Bu güne Özel %20 indirim</h6>
+                </div>
+
+                <span style="text-align: center; text-decoration: line-through; color: gray; font-size: 20px;">{{car.dailyPrice*1.2}} ₺</span>
+                <span style="text-align: center; font-size: 32px;"><b>{{car.dailyPrice}} ₺</b></span>
+
+                <div class="text-center card-body">
+                    <a routerLink="" href="# " class="btn btn-primary " style=" background-color:#393; width: 250px;">Kirala</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="container text-center">
+    <h3>SENİN İÇİN ÖNERİMİZ</h3>
+    <br>
+    <div class="row">
+        <div *ngFor="let car of cars" class="m-3 col-md-3">
+            <img *ngIf="car.carImage.length == 0" class="card-img-top" alt="Image" [src]="imgUrl + defaultImage">
+            <img *ngIf="car.carImage.length != 0" class="card-img-top" alt="Image" [src]="imgUrl + car.carImage[0].imagePath ">
+            <span>{{car.brandName}} {{car.carName}}</span>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="container text-center">
+    <h3>DİĞER ARAÇLAR</h3>
+    <br>
+    <div *ngFor="let car of cars" class="row">
+        <div class="col-sm-2">
+            <img *ngIf="car.carImage.length == 0" alt="Image" width="125" [src]="imgUrl + defaultImage">
+            <img *ngIf="car.carImage.length != 0" alt="Image" width="125" [src]="imgUrl + car.carImage[0].imagePath ">
+            <p>{{car.carName}}</p>
+        </div>
+
+    </div>
+</div><br>
+
+<footer class="container-fluid text-center">
+    <p>Footer Text</p>
+</footer>

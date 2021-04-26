@@ -1,0 +1,22 @@
+<div class="col-md-9">
+    <div class="row">
+        <div *ngFor="let car of cars" class="m-3 col-md-3 card" style="width: 18rem;">
+            <img *ngIf="car.carImage.length == 0" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + defaultImage">
+            <img *ngIf="car.carImage.length != 0" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + car.carImage[0].imagePath ">
+
+            <div class="card-body ">
+                <h5 class="text-center card-title ">{{car.brandName}} {{car.carName}}</h5>
+            </div>
+            <ul class="list-group list-group-flush ">
+                <li class="text-center list-group-item ">MODEL : {{car.modelYear}}</li>
+                <li class="text-center list-group-item ">RENK : {{car.colorName}}</li>
+                <li class="text-center list-group-item ">YAKIT : {{car.description}}</li>
+                <li class="text-center list-group-item ">1 GÜN FİYATI :
+                    <span class="discount">{{car.dailyPrice*1.2}} ₺</span> {{car.dailyPrice}}₺</li>
+            </ul>
+            <div class="text-center card-body ">
+                <a routerLink="details/{{car.carId}}" href="# " class="btn btn-primary ">DETAY</a>
+            </div>
+        </div>
+    </div>
+</div>

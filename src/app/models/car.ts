@@ -10,6 +10,8 @@ export interface Car{
     colorName:string;
     modelYear:number;
     dailyPrice:number;
-    description:string;
+    gearType:string;
+    enginePower:string;
+    fuelType:string;
     carImage:CarImage[];
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/models/brand';
+import { Car } from 'src/app/models/car';
 import { BrandService } from 'src/app/services/brand.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { BrandService } from 'src/app/services/brand.service';
 export class NaviComponent implements OnInit {
 
   brands:Brand[] = [];
+  cars:Car[] = [];
+  filterText="";
   constructor(private brandService:BrandService) { }
 
   ngOnInit(): void {

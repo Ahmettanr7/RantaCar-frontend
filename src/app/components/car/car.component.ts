@@ -16,6 +16,7 @@ export class CarComponent implements OnInit {
   dataLoaded:boolean = false;
   imgUrl ="https://localhost:44349/";
   defaultImage="Images/default.JPG";
+  filterText="";
 
   constructor(private carService:CarService, private activatedRoute:ActivatedRoute) { }
 

@@ -2,3 +2,49 @@ footer {
     background-color: #f2f2f2;
     padding: 25px;
 }
+
+.propf5 {
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 3%;
+}
+
+.propf9 {
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 3%;
+    width: 50%;
+}
+
+.propf7 {
+    background-color: #f7f7f7;
+    text-align: center;
+    padding: 3%;
+    width: 50%;
+}
+
+.discount {
+    background-color: #393;
+    width: auto;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+}
+
+.discount h6,
+h2 {
+    text-align: center;
+    color: white;
+}
+
+.dprice {
+    text-align: center;
+    text-decoration: line-through;
+    color: gray;
+    font-size: 20px;
+}
+
+.price {
+    text-align: center;
+    font-size: 32px;
+}

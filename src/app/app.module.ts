@@ -16,6 +16,8 @@ import { AllcarsComponent } from './components/allcars/allcars.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { FooterComponent } from './components/footer/footer.component';
+import { CarFilterComponent } from './components/car-filter/car-filter.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
     CardetailsComponent,
     AllcarsComponent,
     FilterPipePipe,
+    FooterComponent,
+    CarFilterComponent,
   ],
   imports: [
     BrowserModule,

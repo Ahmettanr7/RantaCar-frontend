@@ -22,16 +22,6 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input type="search" [(ngModel)]="filterText" class="form-control me-2" id="filterText" placeholder="Ne aramıştın ?">
-                <button for="filterText" class="btn btn-outline-success" type="submit">Ara</button>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item" *ngFor="let car of cars | filterPipe:filterText">
-                        {{car.carName}}
-                    </li>
-                </ul>
-            </form>
-
         </div>
     </div>
 </nav>

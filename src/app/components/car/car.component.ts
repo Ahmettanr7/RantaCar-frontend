@@ -16,6 +16,7 @@ export class CarComponent implements OnInit {
   dataLoaded:boolean = false;
   imgUrl ="https://localhost:44349/";
   defaultImage="Images/default.JPG";
+  welcomeImage="Images/welcome.jpg";
   filterText="";
 
   constructor(private carService:CarService, private activatedRoute:ActivatedRoute) { }
@@ -25,9 +26,13 @@ export class CarComponent implements OnInit {
       if(params["carId"]){
         this.getCarDetailsByCarId(params["carId"])
       }
+      else if(params["colorId"]){
+        this.getCarDetailsByColorId(params["colorId"])
+      }
       else if(params["id"]){
         this.getByBrandId(params["id"])
-      }else{
+      }
+      else{
         this.getCarDetails();
       }
     })
@@ -46,6 +51,11 @@ export class CarComponent implements OnInit {
   }
   getCarDetailsByCarId(carId:number){
     this.carService.getCarDetailsByCarId(carId).subscribe(response =>{
+      this.cars = response.data
+    })
+  }
+  getCarDetailsByColorId(colorId:number){
+    this.carService.getCarDetailsByColorId(colorId).subscribe(response =>{
       this.cars = response.data
     })
   }

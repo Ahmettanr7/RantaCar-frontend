@@ -1,14 +1,8 @@
-<!-- <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span> -->
-<table class="table container">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Renk</th>
-        </tr>
-    </thead>
-    <tr *ngFor="let color of colors">
-        <td>{{color.id}}</td>
-        <td>{{color.colorName}}</td>
-    </tr>
-</table>
+<ul class="list-group">
+    <li class="list-group-item bg-dark  cursor-pointer btn-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#colors-collapse" aria-expanded="true"><span style="color: white;">Renkler </span><span style="color: black;" class="badge bg-light total">{{colors.length}}</span>
+    </li>
+    <div class="collapse show" id="colors-collapse">
+        <li *ngFor="let color of colors" class="list-group-item cursor-pointer outline-none shadow-none">
+            <a style="color: black; text-decoration: none;" href="/cars/color/{{color.id}}">{{color.colorName}}</a></li>
+    </div>
+</ul>

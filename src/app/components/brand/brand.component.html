@@ -1,8 +1,7 @@
 <ul class="list-group">
-    <li class="list-group-item active brand" routerLink="/cars">Tüm Markalar</li>
-    <li *ngFor="let brand of brands" class="list-group-item">
-        <a style="color: black; text-decoration: none;" href="/cars/brand/{{brand.id}}">{{brand.brandName}}</a></li>
+    <li class="list-group-item bg-dark cursor-pointer btn-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#brands-collapse" aria-expanded="true"><span style="color: white;">Markalar </span><span style="color: black;" class="badge bg-light total">{{brands.length}}</span></li>
+    <div class="collapse show" id="brands-collapse">
+        <li *ngFor="let brand of brands" class="list-group-item cursor-pointer outline-none shadow-none">
+            <a style="color: black; text-decoration: none;" href="/cars/brand/{{brand.id}}">{{brand.brandName}}</a></li>
+    </div>
 </ul>
-<!-- routerLink="/cars/brand/{{brand.id}}" -->
-<!-- (click)="setCurrentBrand(brand)" -->
-<!-- [class]="getCurrentBrandClass(brand)" -->

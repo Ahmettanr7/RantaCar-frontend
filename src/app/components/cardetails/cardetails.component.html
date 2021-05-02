@@ -1,87 +1,79 @@
 <br><br>
-<div>
-    <div class="row">
-        <div *ngFor="let car of cars" id="carouselExampleDark" class="carousel carousel-dark slide col-md-7" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+
+<div class="row">
+    <div *ngFor="let car of cars" id="carouselExampleDark" class="carousel carousel-dark slide col-md-7" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img *ngIf="car.carImage.length==0 " [src]="imgUrl + defaultImage " class="d-block w-100 " alt="... ">
+                <img *ngIf="car.carImage.length !=0 " [src]="imgUrl + car.carImage[0].imagePath " class="d-block w-100 " alt="... ">
             </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000">
-                    <img *ngIf="car.carImage.length==0 " [src]="imgUrl + defaultImage " class="d-block w-100 " alt="... ">
-                    <img *ngIf="car.carImage.length !=0 " [src]="imgUrl + car.carImage[0].imagePath " class="d-block w-100 " alt="... ">
-                </div>
-                <div *ngIf="car.carImage.length > 1" class="carousel-item" data-bs-interval="2000">
-                    <img [src]="imgUrl + car.carImage[1].imagePath " class="d-block w-100 " alt="... ">
-                </div>
-                <div *ngIf="car.carImage.length > 2" class="carousel-item">
-                    <img [src]="imgUrl + car.carImage[2].imagePath " class="d-block w-100 " alt="... ">
-                </div>
-                <div *ngIf="car.carImage.length > 3" class="carousel-item">
-                    <img [src]="imgUrl + car.carImage[3].imagePath " class="d-block w-100 " alt="... ">
-                </div>
+            <div *ngIf="car.carImage.length > 1" class="carousel-item" data-bs-interval="2000">
+                <img [src]="imgUrl + car.carImage[1].imagePath " class="d-block w-100 " alt="... ">
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <div *ngIf="car.carImage.length > 2" class="carousel-item">
+                <img [src]="imgUrl + car.carImage[2].imagePath " class="d-block w-100 " alt="... ">
+            </div>
+            <div *ngIf="car.carImage.length > 3" class="carousel-item">
+                <img [src]="imgUrl + car.carImage[3].imagePath " class="d-block w-100 " alt="... ">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
-        </div>
-        <div *ngFor="let car of cars" class="col-md-5">
-            <div class="row">
+    </div>
+    <div *ngFor="let car of cars" class="m-auto col-md-4">
+        <div class=" row">
 
-                <h2>{{car.brandName}} {{car.carName}}</h2>
-                <a style="margin-top:-7px; margin-bottom: 8px;" href="/cars/details/{{car.brandId}}">{{car.brandName}}</a>
-                <span class="border border-secondary propf5"><b>RENK :</b> {{car.colorName}}</span>
-                <span class="border border-success propf9"><b>MODEL :</b> {{car.modelYear}}</span>
-                <span class="border border-danger propf7"><b>YAKIT TÜRÜ :</b> {{car.fuelType}}</span>
-                <span class="border border-warning propf7"><b>VİTES TİPİ :</b> {{car.gearType}}</span>
-                <span class="border border-info propf9"><b>MOTOR GÜCÜ :</b> {{car.enginePower}}</span>
-                <hr style="margin: 50px;">
+            <h2 class="d-flex tittle">{{car.brandName}} {{car.carName}}</h2>
+            <a style="margin-top:-7px; margin-bottom: 8px;" href="/cars/details/{{car.brandId}}">{{car.brandName}}</a>
+            <span class="border border-secondary propf5"><b>RENK :</b> {{car.colorName}}</span>
+            <span class="border border-success propf9"><b>MODEL :</b> {{car.modelYear}}</span>
+            <span class="border border-danger propf7"><b>YAKIT TÜRÜ :</b> {{car.fuelType}}</span>
+            <span class="border border-warning propf7"><b>VİTES TİPİ :</b> {{car.gearType}}</span>
+            <span class="border border-info propf9"><b>MOTOR GÜCÜ :</b> {{car.enginePower}}</span>
 
-                <div class="discount">
-                    <h6>Bu haftaya Özel indirimi</h6>
-                    <h2>KAÇIRMA!</h2>
-                </div>
-                <span class="dprice">{{car.dailyPrice*1.2 | currency: "TRY":"₺":"3.2-2"}}</span>
-                <span class="price"><b>{{car.dailyPrice | currency: "TRY":"₺":"3.2-2"}}</b></span>
-                <button type="button" class="btn btn-dark btn-lg">Kirala</button>
+            <div class="container mt-3" style="border: 1px solid gray;">
+                {{car.description}}
             </div>
+            <hr style="margin-top: 25px;">
+
+            <div class="discount">
+                <h6>Bu haftaya Özel indirimi</h6>
+                <h2>KAÇIRMA!</h2>
+            </div>
+            <span class="dprice">{{car.dailyPrice*1.2 | currency: "TRY":"₺":"3.2-2"}}</span>
+            <span class="price"><b>{{car.dailyPrice | currency: "TRY":"₺":"3.2-2"}}</b></span>
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Kirala
+              </button>
         </div>
     </div>
-    <hr>
-
-    <div class="container text-center">
-        <h3>SENİN İÇİN ÖNERİMİZ</h3>
-        <br>
-        <div class="row">
-            <div *ngFor="let car of cars" class="m-3 col-md-3">
-                <img *ngIf="car.carImage.length == 0" class="card-img-top" alt="Image" [src]="imgUrl + defaultImage">
-                <img *ngIf="car.carImage.length != 0" class="card-img-top" alt="Image" [src]="imgUrl + car.carImage[0].imagePath ">
-                <span>{{car.brandName}} {{car.carName}}</span>
-            </div>
+</div>
+<hr>
+<div class="row p-5">
+    <div class="col-md-6">
+        <div style="background-color:#f5f5f5;">
+            <h6 class="text-center">ARACI BU NOKTADAN TESLİM ALABİLİRSİNİZ. <br> YA DA 25 KM YAKININDAYSANIZ BİZ GETİREBİLİRİZ</h6>
         </div>
-        <hr>
+        <div class="w100">
+            <iframe class="w100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27437.671321808863!2d32.56131644181733!3d37.97579435436564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d09253eb2debcd%3A0xd92f69841acfb35f!2sKonya%20Havaliman%C4%B1!5e0!3m2!1str!2str!4v1619810575491!5m2!1str!2str"
+                width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+        </div>
+
     </div>
-
-    <div class="container text-center">
-        <h3>BU MARKANIN DİĞER ARAÇLARI</h3>
-        <br>
-        <div *ngFor="let car of cars" class="row">
-            <div class="col-sm-2">
-                <img *ngIf="car.carImage.length == 0" alt="Image" width="125" [src]="imgUrl + defaultImage">
-                <img *ngIf="car.carImage.length != 0" alt="Image" width="125" [src]="imgUrl + car.carImage[0].imagePath ">
-                <p>{{car.carName}}</p>
-            </div>
-
-        </div>
-    </div><br>
-
-    <footer class="container-fluid text-center">
-        <p>Footer Text</p>
-    </footer>
+    <div class="d-flex justify-content-end col-md-6 mt-5 w100"><iframe src="https://www.enakliyat.com.tr/iller-ilceler.aspx" height="400" width="390" frameborder="0" scrolling="no" style="border:none;"></iframe>
+    </div>
+</div>
+<app-rental></app-rental>

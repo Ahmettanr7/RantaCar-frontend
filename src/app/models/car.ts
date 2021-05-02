@@ -13,5 +13,6 @@ export interface Car{
     gearType:string;
     enginePower:string;
     fuelType:string;
+    description:string;
     carImage:CarImage[];
 }

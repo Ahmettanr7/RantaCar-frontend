@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Car } from 'src/app/models/car';
+import { Customer } from 'src/app/models/customer';
 import { Rental } from 'src/app/models/rental';
 import { RentalService } from 'src/app/services/rental.service';
 
@@ -10,7 +12,8 @@ import { RentalService } from 'src/app/services/rental.service';
 export class RentalComponent implements OnInit {
 
   rentals:Rental[] = [];
-  dataLoaded = false;
+  @Input() car:Car;
+  customers:Customer[]=[]
 
   constructor(private carService:RentalService) { }
 
@@ -21,7 +24,6 @@ export class RentalComponent implements OnInit {
   getRentals(){
     this.carService.getRentals().subscribe(response => {
     this.rentals = response.data
-    this.dataLoaded = true;
     })
   }
 

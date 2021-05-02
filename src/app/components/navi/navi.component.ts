@@ -12,6 +12,7 @@ export class NaviComponent implements OnInit {
 
   brands:Brand[] = [];
   cars:Car[] = [];
+  car:Car;
   filterText="";
   constructor(private brandService:BrandService) { }
 

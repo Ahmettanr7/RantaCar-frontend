@@ -1,7 +1,7 @@
 <br><br>
 
 <div class="row">
-    <div *ngFor="let car of cars" id="carouselExampleDark" class="carousel carousel-dark slide col-md-7" data-bs-ride="carousel">
+    <div *ngIf="car" id="carouselExampleDark" class="carousel carousel-dark slide col-md-7" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -32,7 +32,7 @@
               <span class="visually-hidden">Next</span>
             </button>
     </div>
-    <div *ngFor="let car of cars" class="m-auto col-md-4">
+    <div *ngIf="car" class="m-auto col-md-4">
         <div class=" row">
 
             <h2 class="d-flex tittle">{{car.brandName}} {{car.carName}}</h2>
@@ -61,19 +61,23 @@
     </div>
 </div>
 <hr>
-<div class="row p-5">
-    <div class="col-md-6">
-        <div style="background-color:#f5f5f5;">
-            <h6 class="text-center">ARACI BU NOKTADAN TESLİM ALABİLİRSİNİZ. <br> YA DA 25 KM YAKININDAYSANIZ BİZ GETİREBİLİRİZ</h6>
-        </div>
-        <div class="w100">
-            <iframe class="w100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27437.671321808863!2d32.56131644181733!3d37.97579435436564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d09253eb2debcd%3A0xd92f69841acfb35f!2sKonya%20Havaliman%C4%B1!5e0!3m2!1str!2str!4v1619810575491!5m2!1str!2str"
-                width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>
-        </div>
+<div class="row">
+    <h3 class="text-center">En çok tercih edilen araçlar</h3>
+    <div *ngFor="let car of cars | slice:2:7" class="m-auto mt-3 col-md-3 card" style="width: 15rem; height: 350px;">
+        <img *ngIf="car.carImage.length == 0" class="card-img-top" alt="Image" width="100" height="100" style="object-fit: cover;" [src]="imgUrl + defaultImage">
+        <img *ngIf="car.carImage.length != 0" class="card-img-top" alt="Image" width="100" height="100" style="object-fit: contain;" [src]="imgUrl + car.carImage[0].imagePath ">
 
-    </div>
-    <div class="d-flex justify-content-end col-md-6 mt-5 w100"><iframe src="https://www.enakliyat.com.tr/iller-ilceler.aspx" height="400" width="390" frameborder="0" scrolling="no" style="border:none;"></iframe>
+
+        <div class="card-body">
+            <h5 class="text-center card-title ">{{car.brandName}} {{car.carName}}</h5>
+        </div>
+        <ul class="list-group list-group-flush ">
+            <li class="text-center list-group-item "><span class="discountt">{{car.dailyPrice*1.2 | currency: "TRY":"₺":"3.2-2"}}       
+            </span><br> {{car.dailyPrice | currency: "TRY":"₺":"3.2-2"}}</li>
+        </ul>
+        <div class="text-center card-body">
+            <a href="details/{{car.carId}}" class="btn btn-dark">DETAY</a>
+        </div>
     </div>
 </div>
-<app-rental></app-rental>
+<app-rental-add></app-rental-add>

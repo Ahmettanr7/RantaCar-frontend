@@ -12,18 +12,23 @@ import { RentalService } from 'src/app/services/rental.service';
 export class RentalComponent implements OnInit {
 
   rentals:Rental[] = [];
-  @Input() car:Car;
+  car:Car;
   customers:Customer[]=[]
 
-  constructor(private carService:RentalService) { }
+  constructor(private rentalService:RentalService) { }
 
   ngOnInit(): void {
     this.getRentals();
   }
 
   getRentals(){
-    this.carService.getRentals().subscribe(response => {
+    this.rentalService.getRentals().subscribe(response => {
     this.rentals = response.data
+    })
+  }
+  addRental(rental:Rental){
+    this.rentalService.addRental(rental).subscribe(response =>{
+      this.rentals =response.data
     })
   }
 

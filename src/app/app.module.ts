@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { FooterComponent } from './components/footer/footer.component';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
+import { RentalAddComponent } from './components/rental-add/rental-add.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { CarFilterComponent } from './components/car-filter/car-filter.component
     FilterPipePipe,
     FooterComponent,
     CarFilterComponent,
+    RentalAddComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

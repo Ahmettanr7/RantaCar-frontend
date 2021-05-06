@@ -16,4 +16,8 @@ export class RentalService {
     let newPath = this.apiUrl + "getrentaldetails"
     return this.httpClient.get<ListResponseModel<Rental>>(newPath);
   }
+  addRental(rental:Rental):Observable<ListResponseModel<Rental>>{
+    let newPath = this.apiUrl + 'add';
+    return this.httpClient.post<ListResponseModel<Rental>>(newPath,rental)
+  }
 }

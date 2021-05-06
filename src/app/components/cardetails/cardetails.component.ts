@@ -18,14 +18,14 @@ export class CardetailsComponent implements OnInit {
   imgUrl ="https://localhost:44349/";
   defaultImage="Images/default.JPG";
 
+
   constructor(private carService:CarService, private activatedRoute:ActivatedRoute,private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
+      this.getCarDetails();
       if(params["carId"]){
         this.getCarDetailsByCarId(params["carId"])
-      }else{
-        this.getCarDetails();
       }
     })
   }
@@ -37,7 +37,7 @@ export class CardetailsComponent implements OnInit {
   }
   getCarDetailsByCarId(carId:number){
     this.carService.getCarDetailsByCarId(carId).subscribe(response =>{
-      this.cars = response.data
+      this.car = response.data[0]
     })
   }
   

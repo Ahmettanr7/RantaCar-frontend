@@ -14,12 +14,24 @@ import { NaviComponent } from './components/navi/navi.component';
 import { CardetailsComponent } from './components/cardetails/cardetails.component';
 import { AllcarsComponent } from './components/allcars/allcars.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { FooterComponent } from './components/footer/footer.component';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandListComponent } from './components/brand-list/brand-list.component';
+import { CarListComponent } from './components/car-list/car-list.component';
+import { ColorListComponent } from './components/color-list/color-list.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { CarDeleteComponent } from './components/car-delete/car-delete.component';
+import { BrandDeleteComponent } from './components/brand-delete/brand-delete.component';
+import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
 
 @NgModule({
   declarations: [
@@ -36,13 +48,26 @@ import { PaymentComponent } from './components/payment/payment.component';
     FooterComponent,
     CarFilterComponent,
     RentalAddComponent,
-    PaymentComponent
+    PaymentComponent,
+    CarAddComponent,
+    BrandAddComponent,
+    ColorAddComponent,
+    BrandListComponent,
+    CarListComponent,
+    ColorListComponent,
+    BrandUpdateComponent,
+    CarUpdateComponent,
+    ColorUpdateComponent,
+    CarDeleteComponent,
+    BrandDeleteComponent,
+    ColorDeleteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"

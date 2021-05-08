@@ -128,7 +128,7 @@ export class RentalAddComponent implements OnInit {
   addRental() {
     let RentalModel = {
       customerId: this.customerId,
-      carId: this.car.carId,
+      carId: this.car.id,
       rentDate: this.rentDate,
       returnDate: this.returnDate
     };
@@ -140,7 +140,7 @@ export class RentalAddComponent implements OnInit {
     console.log(customerId);
   }
   selectCarId(){
-return this.car.carId
+return this.car.id
   }
 
 }

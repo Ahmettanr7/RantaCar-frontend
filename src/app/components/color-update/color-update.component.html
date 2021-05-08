@@ -1,0 +1,29 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Ürün ekle</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="colorUpdateForm">
+                    <div class="mb-3">
+                        <label for="id" style="display: none;"><b>Renk Id</b></label>
+                        <input type="number" id="id" formControlName="id" class="form-control" [(ngModel)]="id" style="display: none;" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="colorName">Renk adı</label>
+                        <div class="form-group">
+                            <input type="text" id="colorName" formControlName="colorName" class="form-control" [(ngModel)]="colorName" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-dark" (click)="backToList()">Geri dön</button>
+                <button class="btn btn-fill btn-success" (click)="update()" style="float: right;">Güncelle</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

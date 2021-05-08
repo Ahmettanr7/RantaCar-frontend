@@ -26,10 +26,5 @@ export class RentalComponent implements OnInit {
     this.rentals = response.data
     })
   }
-  addRental(rental:Rental){
-    this.rentalService.addRental(rental).subscribe(response =>{
-      this.rentals =response.data
-    })
-  }
 
 }

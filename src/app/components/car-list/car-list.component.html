@@ -1,0 +1,36 @@
+<table class="table container">
+    <thead>
+        <tr>
+            <th>Car Id</th>
+            <th>Marka</th>
+            <th>Araç adı</th>
+            <th>Renk</th>
+            <th>Model yılı</th>
+            <th>Günlük fyatı</th>
+            <th>Vites tipi</th>
+            <th>Motor gücü</th>
+            <th>Yakıt tipi</th>
+            <th>Açıklama</th>
+            <th><button class="btn btn-success" click="routerLink" routerLink="add">Araç Ekle</button></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of cars">
+            <td>{{car.id}}</td>
+            <td>{{car.brandId}} - {{car.brandName}}</td>
+            <td>{{car.carName}}</td>
+            <td>{{car.colorId}} - {{car.colorName}}</td>
+            <td>{{car.modelYear}}</td>
+            <td>{{car.dailyPrice}}</td>
+            <td>{{car.gearType}}</td>
+            <td>{{car.enginePower}}</td>
+            <td>{{car.fuelType}}</td>
+            <td>{{car.description}}</td>
+            <td>
+                <button class="btn btn-warning" click="routerLink" routerLink="update/{{car.id}}">Güncelle</button>
+                <button class="btn btn-danger" click="routerLink" routerLink="delete/{{car.id}}">Sil</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

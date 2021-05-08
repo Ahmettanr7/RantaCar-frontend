@@ -1,0 +1,85 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Araba güncelle</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="carUpdateForm">
+                    <div class="mb-3">
+                        <label for="id"><b>Araba Id</b></label>
+                        <input type="number" id="id" formControlName="id" class="form-control" [(ngModel)]="id" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="carName">Araba adı</label>
+                        <div class="form-group">
+                            <input type="text" id="carName" formControlName="carName" class="form-control" [(ngModel)]="carName" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="brandId">Marka</label>
+                        <div class="form-group">
+                            <!-- <input type="number" id="brandId" formControlName="brandId" class="form-control" [(ngModel)]="brandId" /> -->
+                            <select type="number" id="brandId" class="form-select" aria-label="Marka secimi" formControlName="brandId">
+                                <option value="" disabled selected>Seçiniz..</option>
+                                <option *ngFor="let brand of brands"  [ngValue]="brand.id">{{brand.brandName}}</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="colorId">Renk</label>
+                        <div class="form-group">
+                            <!-- <input type="number" id="colorId" formControlName="colorId" class="form-control" [(ngModel)]="colorId" /> -->
+                            <select type="number" id="colorId" class="form-select" aria-label="Renk secimi" formControlName="colorId">
+                                <option value=""  disabled selected>Seçiniz..</option>
+                                <option *ngFor="let color of colors" [ngValue]="color.id">{{color.colorName}}</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="modelYear">Model yılı</label>
+                        <div class="form-group">
+                            <input type="number" id="modelYear" formControlName="modelYear" class="form-control" [(ngModel)]="modelYear" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dailyPrice">Günlük fiyatı</label>
+                        <div class="form-group">
+                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" [(ngModel)]="dailyPrice" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gearType">Vites tipi</label>
+                        <div class="form-group">
+                            <input type="text" id="gearType" formControlName="gearType" class="form-control" [(ngModel)]="gearType" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="enginePower">Motor gücü</label>
+                        <div class="form-group">
+                            <input type="text" id="enginePower" formControlName="enginePower" class="form-control" [(ngModel)]="enginePower" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fuelType">Yakıt türü</label>
+                        <div class="form-group">
+                            <input type="text" id="fuelType" formControlName="fuelType" class="form-control" [(ngModel)]="fuelType" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description">Açıklama</label>
+                        <div class="form-group">
+                            <input type="text" id="description" formControlName="description" class="form-control" [(ngModel)]="description" />
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-dark" (click)="backToList()">Geri dön</button>
+                <button class="btn btn-fill btn-success" (click)="update()" style="float: right;">Güncelle</button>
+            </div>
+        </div>
+    </div>
+</div>

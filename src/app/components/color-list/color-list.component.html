@@ -1,0 +1,22 @@
+<table class="table container">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Renk</th>
+            <th></th>
+            <th><button class="btn btn-success" click="routerLink" routerLink="add">Renk Ekle</button></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let color of colors">
+            <td>{{color.id}}</td>
+            <td>{{color.colorName}}</td>
+            <td></td>
+            <td>
+                <button class="btn btn-warning" click="routerLink" routerLink="update/{{color.id}}">Güncelle</button>
+                <button class="btn btn-danger mx-2" click="routerLink" routerLink="delete/{{color.id}}">Sil</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

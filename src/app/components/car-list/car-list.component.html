@@ -1,22 +1,22 @@
-<table class="table container">
-    <thead>
+<table class="table table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>Car Id</th>
-            <th>Marka</th>
-            <th>Araç adı</th>
-            <th>Renk</th>
-            <th>Model yılı</th>
-            <th>Günlük fyatı</th>
-            <th>Vites tipi</th>
-            <th>Motor gücü</th>
-            <th>Yakıt tipi</th>
-            <th>Açıklama</th>
-            <th><button class="btn btn-success" click="routerLink" routerLink="add">Araç Ekle</button></th>
+            <th scope="col">Araç ID No</th>
+            <th scope="col">Marka</th>
+            <th scope="col">Araç adı</th>
+            <th scope="col">Renk</th>
+            <th scope="col">Model yılı</th>
+            <th scope="col">Günlük fyatı</th>
+            <th scope="col">Vites tipi</th>
+            <th scope="col">Motor gücü</th>
+            <th scope="col">Yakıt tipi</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col"><button class="btn btn-success" click="routerLink" routerLink="add">Araç Ekle</button></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let car of cars">
-            <td>{{car.id}}</td>
+            <th scope="row">{{car.id}}</th>
             <td>{{car.brandId}} - {{car.brandName}}</td>
             <td>{{car.carName}}</td>
             <td>{{car.colorId}} - {{car.colorName}}</td>

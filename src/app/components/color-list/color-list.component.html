@@ -1,15 +1,15 @@
-<table class="table container">
-    <thead>
+<table class="table table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>Id</th>
-            <th>Renk</th>
+            <th scope="col">Renk ID No</th>
+            <th scope="col">Renk</th>
             <th></th>
             <th><button class="btn btn-success" click="routerLink" routerLink="add">Renk Ekle</button></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let color of colors">
-            <td>{{color.id}}</td>
+            <th scope="row">{{color.id}}</th>
             <td>{{color.colorName}}</td>
             <td></td>
             <td>

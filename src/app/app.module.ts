@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +12,6 @@ import { CarComponent } from './components/car/car.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { CardetailsComponent } from './components/cardetails/cardetails.component';
-import { AllcarsComponent } from './components/allcars/allcars.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
@@ -32,6 +31,10 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
 import { CarDeleteComponent } from './components/car-delete/car-delete.component';
 import { BrandDeleteComponent } from './components/brand-delete/brand-delete.component';
 import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,6 @@ import { ColorDeleteComponent } from './components/color-delete/color-delete.com
     RentalComponent,
     NaviComponent,
     CardetailsComponent,
-    AllcarsComponent,
     FilterPipePipe,
     FooterComponent,
     CarFilterComponent,
@@ -60,7 +62,10 @@ import { ColorDeleteComponent } from './components/color-delete/color-delete.com
     ColorUpdateComponent,
     CarDeleteComponent,
     BrandDeleteComponent,
-    ColorDeleteComponent
+    ColorDeleteComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +78,9 @@ import { ColorDeleteComponent } from './components/color-delete/color-delete.com
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

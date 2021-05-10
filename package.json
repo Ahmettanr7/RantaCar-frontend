@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~11.2.10",
     "@angular/platform-browser-dynamic": "~11.2.10",
     "@angular/router": "~11.2.10",
+    "@auth0/angular-jwt": "^5.0.2",
     "bootstrap": "^5.0.0-beta3",
     "jquery": "file:node_modules/jquery",
     "ngx-toastr": "^13.2.1",

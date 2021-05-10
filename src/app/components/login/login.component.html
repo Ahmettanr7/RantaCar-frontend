@@ -1,0 +1,27 @@
+<body class="text-center">
+
+    <main class="form-signin">
+        <form [formGroup]="loginForm">
+            <h1 class="h3 mb-3 fw-normal">Giriş yap</h1>
+
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" formControlName="email" placeholder="isim@ornek.com">
+                <label for="floatingInput">Eposta</label>
+            </div>
+            <div class="form-floating mt-1">
+                <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="parola">
+                <label for="floatingPassword">Şifre</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <span>Kayırlı Değil misin? </span>
+                <a href="register">Kayıt ol</a>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" (click)="login()" type="submit">Giriş yap</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+        </form>
+    </main>
+
+
+
+</body>

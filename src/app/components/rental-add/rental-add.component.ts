@@ -7,8 +7,11 @@ import { Customer } from 'src/app/models/customer';
 import { Rental } from 'src/app/models/rental';
 
 import { ResponseModel } from 'src/app/models/responseModel';
+import { User } from 'src/app/models/user';
 import { CarService } from 'src/app/services/car.service';
 import { CustomerService } from 'src/app/services/customer.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-rental-add',
@@ -19,6 +22,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 export class RentalAddComponent implements OnInit {
   car:Car;
   customers: Customer[]
+  customer:Customer
   rentDate: Date;
   returnDate: Date;
   customerId:number;
@@ -26,6 +30,8 @@ export class RentalAddComponent implements OnInit {
   maxDate: string | null;
   firstDateSelected: boolean = false;
   dateAvailable : ResponseModel;
+  user: User= new User();
+  email = this.localStorageService.get("email");
   rental: Rental = {
     carId:0,
     customerId:0,
@@ -50,11 +56,14 @@ export class RentalAddComponent implements OnInit {
     private datePipe: DatePipe,
     private toastrService : ToastrService,
     private activatedRoute:ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private localStorageService:LocalStorageService,
+    private userService:UserService
   ) {}
 
   ngOnInit(): void {
     
+    this.getEmail();
     this.activatedRoute.params.subscribe(params => {
         this.getCarDetailsByCarId(params["carId"])
         this.getCustomer();
@@ -141,6 +150,13 @@ export class RentalAddComponent implements OnInit {
   }
   selectCarId(){
 return this.car.id
+  }
+  getEmail(){
+    if(this.email){
+      this.userService.getByEmail(this.email).subscribe(response=>{
+        this.user = response;
+      })
+    }
   }
 
 }

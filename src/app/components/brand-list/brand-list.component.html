@@ -1,14 +1,14 @@
-<table class="table container">
-    <thead>
+<table class="table table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>Id</th>
-            <th>Marka</th>
-            <th><button class="btn btn-success" click="routerLink" routerLink="add">Marka Ekle</button></th>
+            <th scope="col">Id</th>
+            <th scope="col">Marka</th>
+            <th scope="col"><button class="btn btn-success" click="routerLink" routerLink="add">Marka Ekle</button></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let brand of brands">
-            <td>{{brand.id}}</td>
+            <th scope="row">{{brand.id}}</th>
             <td>{{brand.brandName}}</td>
             <td>
                 <button class="btn btn-warning" click="routerLink" routerLink="update/{{brand.id}}">Güncelle</button>

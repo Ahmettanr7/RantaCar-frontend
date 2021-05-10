@@ -22,9 +22,21 @@
                     </ul>
                 </li>
 
+
+
+            </ul>
+            <ul *ngIf="checkToLogin()==false" class="navbar-nav" style="float: right;">
+                <li class="nav-item">
+                    <a class="nav-link active" href="login"><i class="fas fa-sign-in-alt" style="font-size: small;"></i> Giriş yap</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="register">Kayıt ol</a>
+                </li>
+            </ul>
+            <ul *ngIf="checkToEmail()==true" class="navbar-nav" style="float: right;">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Listele
+              YÖNETİM
             </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownn">
                         <li><a class="dropdown-item" href="/cars/list">Araçları listele</a></li>
@@ -32,8 +44,25 @@
                         <li><a class="dropdown-item" href="/colors/list">Renkleri listele</a></li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{this.user.firstName}} {{this.user.lastName}}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownn">
+                        <li>
+                            <a class="dropdown-item" href="profil">Profil düzenle</a>
+                        </li>
 
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            <a (click)="logOut()" class="dropdown-item">Çıkış yap</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
+
         </div>
 
     </div>

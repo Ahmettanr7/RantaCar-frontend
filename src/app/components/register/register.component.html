@@ -1,0 +1,37 @@
+<body class="text-center">
+
+    <main class="form-signin">
+        <form [formGroup]="registerForm">
+            <h1 class="h3 mb-3 fw-normal">Kayıt ol</h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="ad">
+                <label for="firstName">Ad</label>
+            </div>
+
+            <div class="form-floating mt-1">
+                <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="soyad">
+                <label for="lastName">Soyad</label>
+            </div>
+
+            <div class="form-floating mt-1">
+                <input type="email" class="form-control" id="floatingInput" formControlName="email" placeholder="isim@ornek.com">
+                <label for="floatingInput">Eposta</label>
+            </div>
+            <div class="form-floating mt-1">
+                <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="parola">
+                <label for="floatingPassword">Şifre</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <span>Zaten kayıtlı mısın?  </span>
+                <a href="login">Giriş yap</a>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" (click)="register()" type="submit">Kayıt ol</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+        </form>
+    </main>
+
+
+
+</body>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
 import { CarService } from 'src/app/services/car.service';
+import { FavoriteService } from 'src/app/services/favorite.service';
 
 @Component({
   selector: 'app-car',
@@ -19,7 +21,12 @@ export class CarComponent implements OnInit {
   welcomeImage="Images/welcome.jpg";
   filterText="";
 
-  constructor(private carService:CarService, private activatedRoute:ActivatedRoute) { }
+  constructor(
+    private carService:CarService, 
+    private activatedRoute:ActivatedRoute,
+    private favoriteService:FavoriteService,
+    private toastrService:ToastrService
+    ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -58,5 +65,9 @@ export class CarComponent implements OnInit {
     this.carService.getCarDetailsByColorId(colorId).subscribe(response =>{
       this.cars = response.data
     })
+  }
+
+  addToFavorite(car:Car){
+    this.favoriteService.addToFavorite(car);
   }
 }

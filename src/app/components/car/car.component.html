@@ -26,8 +26,12 @@
 
             <div class="row">
                 <div *ngFor="let car of cars | filterPipe:filterText" class="m-auto mt-3 col-md-3 card" style="width: 20rem;">
+                    <a class="nav-link" (click)="addToFavorite(car)" role="button" type="button" style="font-size: x-large; position: absolute; right: 5px;" title="Favorilerime ekle">
+                        <i class="fa fa-heart" style="color: rgb(226, 145, 145);" aria-hidden="true"></i>
+                    </a>
                     <img *ngIf="car.carImage.length == 0" class="card-img-top" alt="Image" width="200" height="200" style="object-fit: cover;" [src]="imgUrl + defaultImage">
                     <img *ngIf="car.carImage.length != 0" class="card-img-top" alt="Image" width="200" height="200" style="object-fit: contain;" [src]="imgUrl + car.carImage[0].imagePath ">
+
 
                     <div class="card-body">
                         <h5 class="text-center card-title ">{{car.brandName}} {{car.carName}}</h5>

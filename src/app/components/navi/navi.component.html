@@ -26,6 +26,7 @@
 
             </ul>
             <ul *ngIf="checkToLogin()==false" class="navbar-nav" style="float: right;">
+                <app-favorite-summary></app-favorite-summary>
                 <li class="nav-item">
                     <a class="nav-link active" href="login"><i class="fas fa-sign-in-alt" style="font-size: small;"></i> Giriş yap</a>
                 </li>
@@ -34,30 +35,24 @@
                 </li>
             </ul>
             <ul *ngIf="checkToEmail()==true" class="navbar-nav" style="float: right;">
+                <app-favorite-summary></app-favorite-summary>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              YÖNETİM
-            </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownn">
-                        <li><a class="dropdown-item" href="/cars/list">Araçları listele</a></li>
-                        <li><a class="dropdown-item" href="/brands/list">Markaları listele</a></li>
-                        <li><a class="dropdown-item" href="/colors/list">Renkleri listele</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle mt-1" href="#" id="navbarDropdownn" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: large;">
                         {{this.user.firstName}} {{this.user.lastName}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownn">
                         <li>
                             <a class="dropdown-item" href="profil">Profil düzenle</a>
                         </li>
+                        <li><a class="dropdown-item" href="/cars/list">Araçları listele</a></li>
+                        <li><a class="dropdown-item" href="/brands/list">Markaları listele</a></li>
+                        <li><a class="dropdown-item" href="/colors/list">Renkleri listele</a></li>
 
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
                         <li>
-                            <a (click)="logOut()" class="dropdown-item">Çıkış yap</a>
+                            <a (click)="logOut()" style="cursor: pointer;" class="dropdown-item">Çıkış yap</a>
                         </li>
                     </ul>
                 </li>

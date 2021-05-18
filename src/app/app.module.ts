@@ -35,6 +35,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfilComponent } from './components/profil/profil.component';
+import { FavoriteSummaryComponent } from './components/favorite-summary/favorite-summary.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ProfilComponent } from './components/profil/profil.component';
     ColorDeleteComponent,
     LoginComponent,
     RegisterComponent,
-    ProfilComponent
+    ProfilComponent,
+    FavoriteSummaryComponent
   ],
   imports: [
     BrowserModule,

@@ -54,8 +54,14 @@
             </div>
             <span class="dprice">{{car.dailyPrice*1.2 | currency: "TRY":"₺":"3.2-2"}}</span>
             <span class="price"><b>{{car.dailyPrice | currency: "TRY":"₺":"3.2-2"}}</b></span>
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Kirala
+            <button type="button" class="btn btn-danger w-50 ">
+                <a class="nav-link" (click)="addToFavorite(car)" role="button" type="button"  title="Favorilerime ekle">
+                <i class="fa fa-heart" style="color: rgb(226, 145, 145);" aria-hidden="true"><span class="text-light"> Favorilerime ekle</span></i>
+            </a>
+            </button>
+
+            <button type="button" class="btn btn-dark w-50" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa fa-handshake" style="color: #d8c8c8;" aria-hidden="true"> <span class="text-light"> Kirala</span></i>
               </button>
         </div>
     </div>

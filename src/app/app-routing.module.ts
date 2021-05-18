@@ -42,7 +42,7 @@ const routes: Routes = [
   {path:"colors/list/delete/:id", component:ColorDeleteComponent, canActivate:[LoginGuard]},
 
   {path:"details/:carId", component:CardetailsComponent},
-  {path:"cars/brand/:id/color/:colorId",pathMatch:"full",component:CarComponent},
+  {path:"cars/brand/:id/color/:colorId",component:CarComponent},
 
   {path:"details/payment/:rental",component:PaymentComponent},
 

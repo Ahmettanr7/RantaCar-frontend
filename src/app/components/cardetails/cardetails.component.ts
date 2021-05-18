@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
+import { FavoriteService } from 'src/app/services/favorite.service';
 
 @Component({
   selector: 'app-cardetails',
@@ -19,7 +20,12 @@ export class CardetailsComponent implements OnInit {
   defaultImage="Images/default.JPG";
 
 
-  constructor(private carService:CarService, private activatedRoute:ActivatedRoute,private toastrService:ToastrService) { }
+  constructor(
+    private carService:CarService, 
+    private activatedRoute:ActivatedRoute,
+    private toastrService:ToastrService,
+    private favoriteService:FavoriteService
+    ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -43,5 +49,8 @@ export class CardetailsComponent implements OnInit {
   
   setCurrentBrand(brand:Brand){
     this.currentBrand = brand; 
+  }
+  addToFavorite(car:Car){
+    this.favoriteService.addToFavorite(car);
   }
 }

@@ -20,7 +20,7 @@
                     <div class="mb-3">
                         <label for="brandId">Marka</label>
                         <div class="form-group">
-                            <select [(ngModel)]="car.brandId" type="number" id="brandId" class="form-select" aria-label="Marka secimi" formControlName="brandId">
+                            <select *ngIf="car" [(ngModel)]="car.brandId" type="number" id="brandId" class="form-select" aria-label="Marka secimi" formControlName="brandId">
                                 <option value="" disabled selected>Seçiniz..</option>
                                 <option *ngFor="let brand of brands"  [ngValue]="brand.id">{{brand.brandName}}</option>
                               </select>
@@ -29,7 +29,7 @@
                     <div class="mb-3">
                         <label for="colorId">Renk</label>
                         <div class="form-group">
-                            <select [(ngModel)]="car.colorId" type="number" id="colorId" class="form-select" aria-label="Renk secimi" formControlName="colorId">
+                            <select *ngIf="car" [(ngModel)]="car.colorId" type="number" id="colorId" class="form-select" aria-label="Renk secimi" formControlName="colorId">
                                 <option   disabled selected>Seçiniz..</option>
                                 <option *ngFor="let color of colors"  [ngValue]="color.id">{{color.colorName}}</option>
                               </select>

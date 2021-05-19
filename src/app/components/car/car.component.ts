@@ -3,8 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
+import { FavoriteItem } from 'src/app/models/favoriteItem';
+import { FavoriteItems } from 'src/app/models/favoriteItems';
 import { CarService } from 'src/app/services/car.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-car',
@@ -14,6 +17,7 @@ import { FavoriteService } from 'src/app/services/favorite.service';
 export class CarComponent implements OnInit {
 
   cars:Car [] = [];
+  car:Car;
   carImages:CarImage[];
   dataLoaded:boolean = false;
   imgUrl ="https://localhost:44349/";
@@ -25,7 +29,8 @@ export class CarComponent implements OnInit {
     private carService:CarService, 
     private activatedRoute:ActivatedRoute,
     private favoriteService:FavoriteService,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private localstorageService:LocalStorageService,
     ) { }
 
   ngOnInit(): void {
@@ -69,5 +74,6 @@ export class CarComponent implements OnInit {
 
   addToFavorite(car:Car){
     this.favoriteService.addToFavorite(car);
+    
   }
 }

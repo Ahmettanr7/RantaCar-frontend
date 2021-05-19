@@ -15,7 +15,6 @@ export class CarDeleteComponent implements OnInit {
   carDeleteForm:FormGroup;
   car:Car;
   id:number;
-  carName:string;
 
   constructor(private carService:CarService,
     private formBuilder:FormBuilder,
@@ -36,7 +35,6 @@ export class CarDeleteComponent implements OnInit {
     this.carService.getCarDetailsByCarIdSingle(this.activatedRoute.snapshot.params["id"]).subscribe(response=>{
       this.car = response.data
       this.id = this.car.id
-      this.carName = this.car.carName
     })
   }
 
@@ -56,11 +54,11 @@ export class CarDeleteComponent implements OnInit {
       ,
       (responseError)=>
       {
-        if(responseError.error.Errors.length>0){
-          for (let i = 0; i < responseError.error.Errors.length; i++) {
-            this.toastrService.error(responseError.error.Errors[i].ErrorMessage,"Doğrulama hatası")
-          }
-        }
+            //this.toastrService.error(responseError.error.Errors.ErrorMessage,"Doğrulama hatası")
+            console.log(responseError);
+            
+          
+        
       }
       );
     } 

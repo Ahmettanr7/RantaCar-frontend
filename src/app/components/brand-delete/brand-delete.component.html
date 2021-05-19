@@ -7,8 +7,8 @@
             <div class="card-body">
                 <form [formGroup]="brandDeleteForm">
                     <div class="mb-3">
-                        <label for="id" style="display: none;"><b>Marka Id</b></label>
-                        <input type="number" id="id" formControlName="id" class="form-control" [(ngModel)]="id" style="display: none;" />
+                        <label for="id" style="display: none"><b>Marka Id</b></label>
+                        <input type="number" id="id" formControlName="id" class="form-control" [(ngModel)]="id" style="display: none" />
                     </div>
                 </form>
                 <table class="table container">
@@ -20,20 +20,22 @@
                     </thead>
                     <tbody>
                         <tr *ngIf="brand">
-                            <td>{{brand.id}}</td>
-                            <td>{{brand.brandName}}</td>
+                            <td>{{ brand.id }}</td>
+                            <td>{{ brand.brandName }}</td>
                         </tr>
                     </tbody>
-
                 </table>
             </div>
             <div class="card-footer">
-                <button class="btn btn-fill btn-dark" (click)="backToList()">Geri dön</button>
-                <button class="btn btn-fill btn-danger" style="float: right;" (click)="delete()">Eminim sil</button>
-                <span style="float: right;"><b>Bu marka silinecek emin misiniz?</b></span>
-            </div>
-        </div>
-
+                <button class="btn btn-fill btn-dark" (click)="backToList()">
+          Geri dön
+        </button>
+                <button class="btn btn-fill btn-danger" style="float: right" (click)="delete()">
+          Eminim sil
+        </button>
+                <span style="float: right"><b>Bu marka silinecek emin misiniz?</b></span
+        >
+      </div>
     </div>
-
+  </div>
 </div>

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { FavoriteItem } from 'src/app/models/favoriteItem';
+import { CarService } from 'src/app/services/car.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-favorite-summary',

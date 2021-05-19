@@ -58,11 +58,11 @@ export class ColorUpdateComponent implements OnInit {
       ,
       (responseError)=>
       {
-        if(responseError.error.Errors.length>0){
-          for (let i = 0; i < responseError.error.Errors.length; i++) {
-            this.toastrService.error(responseError.error.Errors[i].ErrorMessage,"Doğrulama hatası")
-          }
-        }
+            this.toastrService.error(responseError.error.Message,"Doğrulama hatası")
+            console.log(responseError);
+            
+          
+        
       }
       );
     } else {

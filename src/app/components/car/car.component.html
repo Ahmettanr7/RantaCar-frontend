@@ -29,14 +29,15 @@
                     <a class="nav-link" (click)="addToFavorite(car)" role="button" type="button" style="font-size: x-large; position: absolute; right: 5px;" title="Favorilerime ekle">
                         <i class="fa fa-heart" style="color: rgb(226, 145, 145);" aria-hidden="true"></i>
                     </a>
-                    <img *ngIf="car.carImage.length == 0" class="card-img-top" alt="Image" width="200" height="200" style="object-fit: cover;" [src]="imgUrl + defaultImage">
-                    <img *ngIf="car.carImage.length != 0" class="card-img-top" alt="Image" width="200" height="200" style="object-fit: contain;" [src]="imgUrl + car.carImage[0].imagePath ">
+                    <a href="details/{{car.id}}">
+                        <img *ngIf="car.carImage.length == 0" class="card-img-top" alt="Image" width="200" height="200" style="object-fit: cover;" [src]="imgUrl + defaultImage">
+                        <img *ngIf="car.carImage.length != 0" class="card-img-top" alt="Image" width="200" height="200" style="object-fit: contain;" [src]="imgUrl + car.carImage[0].imagePath ">
+                    </a>
 
-
-                    <div class="card-body">
+                    <div class="card-body" style="cursor: context-menu;">
                         <h5 class="text-center card-title ">{{car.brandName}} {{car.carName}}</h5>
                     </div>
-                    <ul class="list-group list-group-flush ">
+                    <ul class="list-group list-group-flush " style="cursor: context-menu;">
                         <li class="text-center list-group-item ">MODEL : {{car.modelYear}}</li>
                         <li class="text-center list-group-item "><i class="fas fa-palette" style="color: gray;"></i> {{car.colorName}}</li>
                         <li class="text-center list-group-item "><i class="fas fa-gas-pump" style="color: gray;"></i> {{car.fuelType}}</li>

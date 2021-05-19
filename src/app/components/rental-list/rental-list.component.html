@@ -1,0 +1,43 @@
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Kiralama ID</th>
+            <th scope="col">Araba ID</th>
+            <th scope="col">Kullanıcı ID</th>
+            <th scope="col">Marka</th>
+            <th scope="col">Araç</th>
+            <th scope="col">Renk</th>
+            <th scope="col">Kullanıcı adı</th>
+            <th scope="col">Kiralama tarihi</th>
+            <th scope="col">Teslim tarihi</th>
+            <th scope="col">Günlük fiyat</th>
+            <th scope="col">Toplam kira günü</th>
+            <th scope="col">Toplam tutar</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rentalDto of rentalDtos">
+            <th scope="row">{{ rentalDto.rentalId }}</th>
+            <td>{{ rentalDto.carId }}</td>
+            <td>{{ rentalDto.userId }}</td>
+            <td>{{ rentalDto.brandName }}</td>
+            <td>{{ rentalDto.carName }}</td>
+            <td>{{ rentalDto.colorName }}</td>
+            <td>{{ rentalDto.userName }}</td>
+            <td>{{ rentalDto.rentDate }}</td>
+            <td>{{ rentalDto.returnDate }}</td>
+            <td>{{ rentalDto.dailyPrice }}</td>
+            <td>{{ rentalDto.totalRentDay }}</td>
+            <td>{{ rentalDto.totalPrice }}</td>
+            <td>
+                <button class="btn btn-warning" click="routerLink" routerLink="update/{{ rentalDto.rentalId }}">
+          Güncelle
+        </button>
+                <button class="btn btn-danger" click="routerLink" routerLink="delete/{{ rentalDto.rentalId }}">
+          Sil
+        </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

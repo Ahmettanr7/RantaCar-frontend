@@ -1,0 +1,52 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title text-center">Kiralama güncelle</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="rentalUpdateForm">
+                    <div class="mb-3">
+                        <label for="id"><b>Kiralama ID</b></label>
+                        <input type="number" id="id" formControlName="id" class="form-control" [(ngModel)]="id" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="carId">Araç</label>
+                        <div class="form-group">
+                            <select *ngIf="rental" [(ngModel)]="rental.carId" type="number" id="carId" class="form-select" aria-label="Araç secimi" formControlName="carId">
+                                <option value="" disabled selected>Seçiniz..</option>
+                                <option *ngFor="let car of cars"  [ngValue]="car.id">{{car.carName}}</option>
+                              </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="brandId">Kullanıcı</label>
+                        <div class="form-group">
+                            <select *ngIf="rental" [(ngModel)]="rental.userId" type="number" id="userId" class="form-select" aria-label="Kullanıcı secimi" formControlName="userId">
+                                <option value="" disabled selected>Seçiniz..</option>
+                                <option *ngFor="let user of users"  [ngValue]="user.id">{{user.firstName}} {{user.lastName}}</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rentDate">Başlangıç tarihi</label>
+                        <div class="form-group">
+                            <input *ngIf="rental" [(ngModel)]="rental.rentDate" type="date" id="rentDate" formControlName="rentDate" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="returnDate">Teslim tarihi</label>
+                        <div class="form-group">
+                            <input *ngIf="rental" [(ngModel)]="rental.returnDate" type="date" id="returnDate" formControlName="returnDate" class="form-control">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-dark" (click)="backToList()">Geri dön</button>
+                <button class="btn btn-fill btn-success" (click)="update()" style="float: right;">Güncelle</button>
+            </div>
+        </div>
+    </div>
+</div>

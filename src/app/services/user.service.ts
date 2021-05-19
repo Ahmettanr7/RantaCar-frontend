@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ResponseModel } from 'src/app/models/responseModel';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
+import { ListResponseModel } from '../models/listResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,8 @@ profileUpdate(user:User):Observable<ResponseModel>{
     password:user.password
   });
 }
+getUsers():Observable<ListResponseModel<User>>{
+  let newPath = this.apiUrl + "getall"
+  return this.httpClient.get<ListResponseModel<User>>(newPath);
 }
-// getByEmail(email:string):Observable<User>{
-//   let newPath=this.apiUrl + "users/email?email="+email
-//   return this.httpClient.get<User>(newPath)
-// }
+}

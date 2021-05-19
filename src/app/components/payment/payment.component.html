@@ -1,18 +1,88 @@
-<table class="table container">
-    <thead>
-        <tr>
-            <th>Araç</th>
-            <th>müşteri</th>
-            <th>rent</th>
-            <th>return</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{rental.carId}}</td>
-            <td>{{rental.customerId}}</td>
-            <td>{{rental.rentDate}}</td>
-            <td>{{rental.returnDate}}</td>
-        </tr>
-    </tbody>
-</table>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ödeme detay</h3>
+                    <div class="checkbox pull-right">
+                        <label>
+              <input type="checkbox" />
+              Hatırla
+            </label>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="cardNumber"> KART NUMARASI</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="cardNumber" placeholder="Geçerli kart numarası" required autofocus />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span
+                ></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="expityMonth"> SON KULLANMA TARİHİ</label>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" id="expityMonth" placeholder="AY" required />
+                                    </div>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" id="expityYear" placeholder="YIL" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cvCode"> CV KODU</label>
+                                    <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <ul class="nav nav-pills nav-stacked">
+                <li *ngIf="rentalDto" class="active w-100">
+                    <a href="#"><span class="badge pull-right"
+              ><span class="glyphicon glyphicon"></span
+              >{{rentalDto.totalPrice | currency: "TRY":"₺":"3.2-2"}}</span
+            >
+            Ödenecek tutar</a
+          >
+        </li>
+      </ul>
+      <br />
+      <a (click)="payment()" class="btn btn-success btn-lg btn-block" role="button">Öde</a>
+        </div>
+        <div class="col-md-5">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-7" *ngIf="car">
+                        <a href="details/{{car.id}}">
+                            <img *ngIf="car.carImage.length == 0" class="card-img m-auto" alt="Image" style="object-fit: cover;" [src]="imgUrl + defaultImage">
+                            <img *ngIf="car.carImage.length != 0" class="card-img m-auto" alt="Image" style="object-fit: cover;" [src]="imgUrl + car.carImage[0].imagePath ">
+                        </a>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <h5 *ngIf="rentalDto" class="card-title"><b>{{rentalDto.brandName}} {{rentalDto.carName}}</b></h5>
+                            <p *ngIf="car" class="card-text">{{car.description}}</p>
+                            <p *ngIf="car" class="card-text"><small class="text-muted"><b>Model: {{car.modelYear}}</b></small></p>
+                            <p *ngIf="car" class="card-text"><small class="text-muted"><b>Yakıt: {{car.fuelType}}</b></small></p>
+                            <p *ngIf="car" class="card-text"><small class="text-muted"><b>Vites türü: {{car.gearType}}</b></small></p>
+                            <p *ngIf="car" class="card-text"><small class="text-muted"><b>Motor gücü: {{car.enginePower}}</b></small></p>
+                            <p *ngIf="car" class="card-text"><small class="text-muted"><b>Günlük fiyatı: {{car.dailyPrice}}</b></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

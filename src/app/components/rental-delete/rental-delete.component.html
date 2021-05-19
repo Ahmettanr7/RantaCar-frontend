@@ -1,0 +1,46 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title text-center">Kiralama sil</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="rentalDeleteForm">
+                    <div class="mb-3">
+                        <label for="id" style="display: none;"><b>Kiralama Id</b></label>
+                        <input type="number" id="id" formControlName="id" class="form-control" [(ngModel)]="id" style="display: none;" />
+                    </div>
+                </form>
+
+                <table class="table container">
+                    <thead>
+                        <tr>
+                            <th>Kiralama ID</th>
+                            <th>Araç ID</th>
+                            <th>Kullanıcı ID</th>
+                            <th>Kiralama tarihi</th>
+                            <th>Teslim tarihi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="rental">
+                            <td>{{rental.id}}</td>
+                            <td>{{rental.carId}}</td>
+                            <td>{{rental.userId}}</td>
+                            <td>{{rental.rentDate}}</td>
+                            <td>{{rental.returnDate}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-dark" (click)="backToList()">Geri dön</button>
+                <button class="btn btn-fill btn-danger" style="float: right;" (click)="delete()">Eminim sil</button>
+                <span style="float: right;"><b>Bu Kiralama silinecek emin misiniz?</b></span>
+
+            </div>
+        </div>
+    </div>
+</div>

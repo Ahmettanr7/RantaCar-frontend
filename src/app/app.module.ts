@@ -2,14 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { CarComponent } from './components/car/car.component';
-import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { CardetailsComponent } from './components/cardetails/cardetails.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
@@ -18,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { FooterComponent } from './components/footer/footer.component';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
+import { RentalListComponent } from './components/rental-list/rental-list.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
@@ -36,6 +35,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { FavoriteSummaryComponent } from './components/favorite-summary/favorite-summary.component';
+import { RentalDeleteComponent } from './components/rental-delete/rental-delete.component';
+import { RentalUpdateComponent } from './components/rental-update/rental-update.component';
 
 @NgModule({
   declarations: [
@@ -44,13 +45,13 @@ import { FavoriteSummaryComponent } from './components/favorite-summary/favorite
     ColorComponent,
     CustomerComponent,
     CarComponent,
-    RentalComponent,
     NaviComponent,
     CardetailsComponent,
     FilterPipePipe,
     FooterComponent,
     CarFilterComponent,
     RentalAddComponent,
+    RentalListComponent,
     PaymentComponent,
     CarAddComponent,
     BrandAddComponent,
@@ -67,7 +68,9 @@ import { FavoriteSummaryComponent } from './components/favorite-summary/favorite
     LoginComponent,
     RegisterComponent,
     ProfilComponent,
-    FavoriteSummaryComponent
+    FavoriteSummaryComponent,
+    RentalDeleteComponent,
+    RentalUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -86,3 +89,4 @@ import { FavoriteSummaryComponent } from './components/favorite-summary/favorite
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+  

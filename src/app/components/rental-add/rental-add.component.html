@@ -3,97 +3,94 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 *ngIf="car" class="modal-title" id="exampleModalLabel">
-                    {{car.brandName}} {{car.carName}} | Kirala
+                    {{ car.brandName }} {{ car.carName }} | Kirala
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div *ngIf="car" class="form-group row mb-2">
                     <label for="example-date-input" class="col-4 col-form-label">Günlük tutar</label
-        > 
-        <div class="col-8">
-          <input
-            type="text"
-            disabled="disabled"
-            class="form-control"
-            value="{{car.dailyPrice | currency : '₺'}}"
-          />
+          >
+          <div class="col-8">
+            <input
+              type="text"
+              disabled="disabled"
+              class="form-control"
+              value="{{ car.dailyPrice | currency: '₺' }}"
+            />
+          </div>
         </div>
-      </div>
-          
-      <div class="form-group row mb-2">
-        <label for="example-date-input" class="col-4 col-form-label"
-          >Kiralayan</label
-        >
+        <div>
+          <form [formGroup]="rentalAddForm">
+            <div class="form-group row mb-2" style="display: none">
+              <label for="userId" class="col-4 col-form-label">Kiralayan</label>
 
-        <div class="col-8">
-          <input
-            type="text"
-            disabled="disabled"
-            class="form-control"
-            [value]=user.firstName+user.lastName
-          />
-        </div>
-
-        <!-- <div class="col-8">
-          <select #selectCustomer (change)="setCustomerId(selectCustomer.value)" class="form-select">
-            <option selected hidden>Müşteri seçiniz</option>
-            <option
-              *ngFor="let customer of customers"
-              value="{{customer.userId}}"
-            >  
-            {{customer.companyName}} | {{customer.firstName}} {{customer.lastName}}
-            </option>
-          </select>
-        </div> -->
-      </div>
-       
-      <div class="form-group row mb-2">
-        <label for="example-date-input" class="col-4 col-form-label"
-          >Başlangıç</label
-        >
-        <div class="col-8">
-          <input
-            (change)="onChangeEvent($event)"
-            min="{{ getRentMinDate() }}"
-            [(ngModel)]="rentDate"
-            type="date"
-            class="form-control"
-            id="rent-date"
-            placeholder="Bir gün seçiniz."
-          />
-        </div>
-      </div>
-      
-      <div class="form-group row">
-        <label for="example-date-input" class="col-4 col-form-label"
-          >Bitiş</label
-        >
-        <div class="col-8">
-          <input
-            disabled="{{ !firstDateSelected }}"
-            min="{{ getReturnMinDate() }}"
-            max="{{ getReturnMaxDate() }}"
-            [(ngModel)]="returnDate"
-            type="date"
-            class="form-control"
-            id="return-date"
-            placeholder="Bir gün seçiniz."
-          />
-        </div>
-      </div>
-      <div *ngIf="returnDate"  class="form-group row mb-2 mt-2">
-        <label  for="example-date-input" class="col-4 col-form-label"> Toplam tutar</label>
                     <div class="col-8">
-                        <input *ngIf="car" type="text" disabled="disabled" class="form-control" value="{{calculatePrice() | currency : '₺'}}" />
+                        <input id="userId" formControlName="userId" type="text" class="form-control" [value]="user.id" [ngModel]="user.id" />
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Kapat
-                  </button>
-                    <button *ngIf="car" (click)="addRental()" data-bs-dismiss="modal" type="button" class="btn btn-primary">Ödemeye geç</button>
+
+                <div class="form-group row mb-2" style="display: none">
+                    <label for="carId" class="col-4 col-form-label">Araba</label>
+                    <div class="col-8">
+                        <input *ngIf="car" id="carId" formControlName="carId" type="text" class="form-control" [value]="car.id" [ngModel]="car.id" />
+                    </div>
                 </div>
+
+                <div class="form-group row mb-2">
+                    <label for="rentDate" class="col-4 col-form-label">Başlangıç</label
+              >
+              <div class="col-8">
+                <input
+                  (change)="onChangeEvent($event)"
+                  min="{{ getRentMinDate() }}"
+                  [(ngModel)]="rentDate"
+                  type="date"
+                  class="form-control"
+                  id="rentDate"
+                  formControlName="rentDate"
+                  placeholder="Bir gün seçiniz."
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="returnDate" class="col-4 col-form-label">Bitiş</label>
+                    <div class="col-8">
+                        <input min="{{ getReturnMinDate() }}" max="{{ getReturnMaxDate() }}" [(ngModel)]="returnDate" type="date" class="form-control" id="returnDate" formControlName="returnDate" placeholder="Bir gün seçiniz." />
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
+        <div *ngIf="returnDate" class="form-group row mb-2 mt-2">
+            <label for="example-date-input" class="col-4 col-form-label">
+          Toplam tutar</label
+        >
+        <div class="col-8">
+          <input
+            *ngIf="car"
+            type="text"
+            disabled="disabled"
+            class="form-control"
+            value="{{ calculatePrice() | currency: '₺' }}"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Kapat
+        </button>
+        <button
+          *ngIf="car"
+          (click)="addRental()"
+          data-bs-dismiss="modal"
+          type="button"
+          class="btn btn-primary"
+        >
+          Ödemeye geç
+        </button>
+      </div>
     </div>
+  </div>
+</div>

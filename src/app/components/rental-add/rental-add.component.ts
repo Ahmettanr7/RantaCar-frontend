@@ -1,16 +1,16 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
-import { Customer } from 'src/app/models/customer';
 import { Rental } from 'src/app/models/rental';
 
 import { ResponseModel } from 'src/app/models/responseModel';
 import { User } from 'src/app/models/user';
 import { CarService } from 'src/app/services/car.service';
-import { CustomerService } from 'src/app/services/customer.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { RentalService } from 'src/app/services/rental.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -20,54 +20,39 @@ import { UserService } from 'src/app/services/user.service';
   providers: [DatePipe],
 })
 export class RentalAddComponent implements OnInit {
-  car:Car;
-  customers: Customer[]
-  customer:Customer
+  rentalAddForm: FormGroup;
+  rental:Rental;
+  car: Car;
+  userId: number;
+  carId: number;
+  rentalId: number;
   rentDate: Date;
   returnDate: Date;
-  customerId:number;
   minDate: string | any;
   maxDate: string | null;
   firstDateSelected: boolean = false;
-  dateAvailable : ResponseModel;
-  user: User= new User();
-  email = this.localStorageService.get("email");
-  rental: Rental = {
-    carId:0,
-    customerId:0,
-    rentDate: new Date(),
-    returnDate: new Date(),
-    brandName:"",
-    carName:"",
-    colorName:"",
-    customerName:"",
-    dailyPrice:0,
-    rentalId:0,
-    totalPrice:0,
-    totalRentDay:0,
-    userId:0,
-    userName:""
-  }
-  
+  dateAvailable: ResponseModel;
+  user: User = new User();
+  email = this.localStorageService.get('email');
 
   constructor(
-    private customerService: CustomerService,
     private carService: CarService,
     private datePipe: DatePipe,
-    private toastrService : ToastrService,
-    private activatedRoute:ActivatedRoute,
-    private router:Router,
-    private localStorageService:LocalStorageService,
-    private userService:UserService
+    private toastrService: ToastrService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private localStorageService: LocalStorageService,
+    private userService: UserService,
+    private rentalService: RentalService,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
-    
     this.getEmail();
-    this.activatedRoute.params.subscribe(params => {
-        this.getCarDetailsByCarId(params["carId"])
-        this.getCustomer();
-    })
+    this.createRentalAddForm();
+    this.activatedRoute.params.subscribe((params) => {
+      this.getCarDetailsByCarId(params['carId']);
+    });
   }
 
   onChangeEvent(event: any) {
@@ -96,67 +81,73 @@ export class RentalAddComponent implements OnInit {
     );
     return this.maxDate;
   }
-  getCustomer() {
-    this.customerService.getCustomers().subscribe((response) => {
-      this.customers = response.data;
+  getCarDetailsByCarId(carId: number) {
+    this.carService.getCarDetailsByCarIdSingle(carId).subscribe((response) => {
+      this.car = response.data;
     });
-  }
-  getCarDetailsByCarId(carId:number){
-    this.carService.getCarDetailsByCarId(carId).subscribe((response)=> {
-      this.car = response.data[0]
-    })
   }
   calculatePrice() {
     if (this.returnDate) {
-      let returnDate = new Date(this.returnDate.toString())
-      let rentDate = new Date(this.rentDate.toString())
+      let returnDate = new Date(this.returnDate.toString());
+      let rentDate = new Date(this.rentDate.toString());
 
-      let returnDay = Number.parseInt(returnDate.getDate().toString())
-      let rentDay = Number.parseInt(rentDate.getDate().toString())
+      let returnDay = Number.parseInt(returnDate.getDate().toString());
+      let rentDay = Number.parseInt(rentDate.getDate().toString());
 
-      let returnMonth = Number.parseInt(returnDate.getMonth().toString())
-      let rentMonth = Number.parseInt(rentDate.getMonth().toString())
+      let returnMonth = Number.parseInt(returnDate.getMonth().toString());
+      let rentMonth = Number.parseInt(rentDate.getMonth().toString());
 
-      let returnYear = Number.parseInt(returnDate.getFullYear().toString())
-      let rentYear = Number.parseInt(rentDate.getFullYear().toString())
+      let returnYear = Number.parseInt(returnDate.getFullYear().toString());
+      let rentYear = Number.parseInt(rentDate.getFullYear().toString());
 
-      let result = ((returnDay - rentDay) + ((returnMonth - rentMonth) * 30) + ((returnYear - rentYear) * 365)) * this.car.dailyPrice
+      let result =(returnDay -rentDay +(returnMonth - rentMonth) * 30 +(returnYear - rentYear) * 365) *this.car.dailyPrice;
 
       if (result > 0) {
         return result;
       }
-      this.toastrService.info("Bu tarihler arasında arabayı kiralayamazsınız", "Geçersiz tarih seçimi")
-      return 0
-
-    }
-    
-    else {
+      this.toastrService.info(
+        'Bu tarihler arasında arabayı kiralayamazsınız',
+        'Geçersiz tarih seçimi'
+      );
+      return 0;
+    } else {
       return this.car.dailyPrice;
     }
   }
+  createRentalAddForm() {
+    this.rentalAddForm = this.formBuilder.group({
+      userId: ['', Validators.required],
+      carId: ['', Validators.required],
+      rentDate: ['', Validators.required],
+      returnDate: ['', Validators.required],
+    });
+  }
   addRental() {
-    let RentalModel = {
-      customerId: this.customerId,
-      carId: this.car.id,
-      rentDate: this.rentDate,
-      returnDate: this.returnDate
-    };
-    this.router.navigate(["details/payment/", JSON.stringify(RentalModel)]);
-    this.toastrService.success("Ödeme sayfasına yönlendiriliyorsunuz.", "Başarılı işlem");
-  }
-  setCustomerId(customerId: any) {
-    this.customerId = customerId;
-    console.log(customerId);
-  }
-  selectCarId(){
-return this.car.id
-  }
-  getEmail(){
-    if(this.email){
-      this.userService.getByEmail(this.email).subscribe(response=>{
-        this.user = response;
-      })
+    if (this.rentalAddForm.valid) {
+      let carModel = Object.assign({}, this.rentalAddForm.value);
+      this.rentalService.add(carModel).subscribe((response) =>{
+          this.toastrService.success(
+            'Ödeme sayfasına yönlendiriliyorsunuz.',
+            'Başarılı işlem'
+          );
+          this.router.navigate(['details/payment', this.car.id]);
+        },
+        (responseError) => {
+          this.toastrService.error(
+            responseError.error.message,
+            'Doğrulama hatası'
+          );
+        }
+      );
+    } else {
+      this.toastrService.error('Formunuz eksik', 'Dikkat');
     }
   }
-
+  getEmail() {
+    if (this.email) {
+      this.userService.getByEmail(this.email).subscribe((response) => {
+        this.user = response;
+      });
+    }
+  }
 }

@@ -1,5 +1,17 @@
 # Rantacar
 
+Engin Demiroğ hocanın 3 ay süren C# ve Angular a yönelik Yazılım geliştirici yetiştirme kampında derslerin haricinde paralel olarak yürüttüğümüz bireysel  bir projeydi bu.
+Daha eklemeler ve iyileştirmeler yapılacak fakat şuan devam etmekte olan Java kursuna ağırlık vereceğimden bunu burada bırakmak istedim. 
+
+--Gerçek hayata uygun profesyonel tekniklerle backend ve frontend kodlamalar yapıldı.
+
+--Projelerinde OOP ve AOP gibi sektörün en ileri seviye tekniklerini kullanıldı.
+
+# Projenin Kullanıcı arayüzünü (UI)  (https://youtu.be/rNMB1JQvK6o) linke tıklayarak izleyebilirsiniz.
+
+#Backend kodları için = https://github.com/Ahmettanr7/RantaCar-backend
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
 
 ## Development server

@@ -1,13 +1,12 @@
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: x-large;" title="Favorilerim">
-        <i class="fa fa-heart" style="color: rgb(145, 22, 22);" aria-hidden="true"></i>
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Favorilerim">
+        Favorilerim <br><i class="fa fa-heart" style="color: rgb(145, 22, 22); margin-left: 25px;" aria-hidden="true"></i>
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
         <li *ngFor="let favoriteItem of favoriteItems" style="width: 235px;">
             <a class="dropdown-item">
                 <span click="routerLink" routerLink="details/{{favoriteItem.car.id}}" style="float: left; cursor: pointer;">{{favoriteItem.car.brandName}} {{favoriteItem.car.carName}}</span>
                 <span (click)="removeFromFavorite(favoriteItem.car)" class="badge bg-danger mt-1" style="float: right; cursor: pointer; height: min-content;">X</span>
-                <hr>
             </a>
         </li>
         <li *ngIf="favoriteItems.length<1 " class="text-center">

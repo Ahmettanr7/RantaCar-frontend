@@ -27,18 +27,13 @@ customer:Customer;
   constructor(
               private formBuilder:FormBuilder,
               private toastrService:ToastrService,
-              private customerService:CustomerService,
-              private authService:AuthService,
-              private userService:UserService,
-              private activatedRoute:ActivatedRoute
+              private userService:UserService
               ) { }
 
   ngOnInit(): void {
     this.createProfileAddForm();
     this.email = localStorage.getItem("email")
     this.getUser();
-    this.getCustomer();
-    this.createCustomerForm();
   }
 
   createProfileAddForm(){
@@ -51,32 +46,6 @@ customer:Customer;
       status:true
 
     })
-  }
-  createCustomerForm(){
-    this.customerForm=this.formBuilder.group({
-      
-      companyName:["",Validators.required],  
-    })
-  }
-  getCustomer(){
-    this.customerService.getByCustomerId(this.authService.getCurrentUserId()).subscribe(response => {
-      this.customer = response.data
-      this.customerForm.patchValue(response.data)
-    })
-  }
-  updateCustomer(){
-    if(this.customerForm.valid){  
-    this.customerForm.addControl("id",new FormControl(this.customer.userId))
-    let customerModel = Object.assign({},this.customerForm.value)
-    
-      this.customerService.update(customerModel).subscribe(response=>{
-        this.toastrService.success(response.message)
-      },errorResponse=>{
-        this.toastrService.error("Hata")
-      })
-    }else{
-      this.toastrService.error("Form boş bırakıldı","Uyarı")
-    }
   }
   getUser(){
     if(this.email){

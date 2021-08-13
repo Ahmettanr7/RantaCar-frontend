@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         this.toastrService.success("Giriş yapıldı", "Başarılı")
         this.localStorageService.set("token",response.data.token)
         this.localStorageService.set("email",this.loginForm.value.email)
-        this.router.navigate(["cars"])
+        window.location.assign("cars")
       },responseError=>{
         this.toastrService.error(responseError.error)
       })    

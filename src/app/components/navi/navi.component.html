@@ -26,12 +26,18 @@
 
             </ul>
             <ul *ngIf="checkToLogin()==false" class="navbar-nav" style="float: right;">
-                <app-favorite-summary></app-favorite-summary>
+                <!-- <app-favorite-summary></app-favorite-summary> -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="login"><i class="fas fa-sign-in-alt" style="font-size: small;"></i> Giriş yap</a>
+                    <button type="button" class="btn btn-primary">
+                        <a class="nav-link active" href="login">Giriş yap</a>
+                    </button>
+                    
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="register">Kayıt ol</a>
+                    <button type="button" class="btn btn-secondary ms-1">
+                    <a class="nav-link text-light" href="register">Kayıt ol</a>
+                    </button>
+                   
                 </li>
             </ul>
             <ul *ngIf="checkToEmail()==true" class="navbar-nav" style="float: right;">
